@@ -1,6 +1,6 @@
 # 🌊 Float Vertical Profiling System - MATE ROV
 
-This repository contains the complete codebase for the Float system used in the MATE ROV competition by the Triton ROV subteam.
+This repository contains the workflow for the Float system used in the MATE ROV competition by the Triton ROV subteam.
 It automates vertical profiling by collecting pressure data at different depths using a custom-made float, and visualizes the data on the station side.
 
 ---
@@ -51,6 +51,19 @@ ensuring full water expulsion.
 - The station script then processes the pressure data, converts it to calibrated depth, and plots a graph alongside a tabulated summary of the readings. The output is saved as both an 
 image and a text file locally.
 - The station script then turns off Wi-Fi to complete the cycle.
+
+# ⚙️ nano_float.ino 
+- The Arduino Nano controls a motor that pushes and pulls water using a custom syringe to make the float sink or rise.
+
+- It receives a "Start" command from the ESP32 and begins the descent phase by rotating the motor.
+
+- The Nano keeps track of how far the motor has turned using an encoder to measure depth change.
+
+- Once it rotates a set amount, it stops the motor and waits for the ESP32 to command the Nano for regulation.
+
+- After the readings are collected, the float automatically ascends as the Nano rotates the motor in reverse until it returns to the starting position.This fully empties the syringe to bring the float back to the surface.
+
+- The Nano includes basic safety checks to stop the motor or reset itself when needed.
 
 # 🌐 esp_float.ino 
 
