@@ -24,7 +24,7 @@ The float system consists of:
 
 ---
 
-# ⚙️ Hardware & Flow
+# ⚙️ Hardware
 
 ## 🔧 Hardware Involved
 - ESP32 (Hotspot)
